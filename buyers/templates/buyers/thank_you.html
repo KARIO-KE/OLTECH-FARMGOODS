@@ -1,0 +1,10 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Thank You for Your Order!</h2>
+    <p>Your order is being processed. Please check your payment method.</p>
+    <a href="/" class="btn btn-primary">Back to Home</a>
+    <a href="{% url 'logout' %}" class="btn btn-secondary">Logout</a>
+</div>
+{% endblock %}

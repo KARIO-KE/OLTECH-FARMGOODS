@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}OLTECH FARMGOODS{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-lightblue">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"> <img src="{% static 'images/logo.png' %}" alt="OLTech Logo" style="height:70px; width: 70px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:about' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                   <a class="nav-link"  href="{% url 'shop:product_list'  %}">Shop</a>
+
+                    </li>
+                    
+                </ul>
+                
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                  <a class="nav-link" href="{% url 'cart:cart' %}"><i class="fas fa-shopping-cart">cart</i>
+                    </a>
+                <ul class="navbar-nav ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-bell"></i> Notifications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:settings' %}"><i class="bi bi-gear"></i> Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:settings' %}"><i class="bi bi-person-circle"></i> {{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="toggleTheme()"><i class="bi bi-moon"></i>Mode</a>
+                    </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="{% url 'accounts:logout' %}"><i class="bi bi-door-open"></i> Logout</a>
+                        </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+   <footer class="bg-light text-center py-1">We are glad to have you as part of our team.</footer>
+<footer class="bg-dark text-white mt-4">
+    <div class="container p-2" style="max-width: 900px;">
+    <div class="row">
+        <!-- Get in touch with us - Left-aligned -->
+        <div class="col-md-4 text-start">
+            <h5>Get in touch with us</h5>
+            <p>Email: info@Oltechfarmgoods.co.ke</p>
+            <p>Phone: (+254)768608040.</p>
+        </div>
+
+        <!-- About Us - Center-aligned -->
+        <div class="col-md-4 text-center">
+            <h5>About Us</h5>
+            <p>We provide fresh farm produce to your doorstep.</p>
+        </div>
+
+        <!-- Support Us - Right-aligned -->
+        <div class="col-md-4 text-end">
+            <h5>Support Us</h5>
+            <p>Your support helps farmers get their produce to markets more easily.</p>
+        </div>
+    </div>
+
+    <div class="text-center mt-2">
+        <p style="color: #FFA500;">&copy;Copyrights 2024 OLTECH FARMGOODS. All rights reserved.</p>
+    </div>
+</div>
+
+</footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('bg-dark');
+            document.body.classList.toggle('bg-light');
+        }
+    </script>
+<script>
+  var myCarousel = document.getElementById('carouselExampleSlidesOnly');
+  var carousel = new bootstrap.Carousel(myCarousel, {
+    interval: 3000,  // Set auto-play to 3 seconds
+    ride: 'carousel'
+  });
+</script>
+
+</body>
+</html>

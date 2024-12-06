@@ -1,0 +1,43 @@
+{% extends 'farm_generic.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Edit Your Products</h2>
+
+{% if products %}
+    <div class="product-list">
+        {% for product in products %}
+            <div class="product-card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image" />
+                <div class="product-info">
+                    <h3>{{ product.name }}</h3>
+                    <p><strong>Type:</strong> {{ product.type }}</p>
+                    <p><strong>Description:</strong> {{ product.description }}</p>
+                    <p><strong>Owner:</strong> {{ product.owner }}</p>
+                    <p><strong>Price:</strong> ${{ product.price }}</p>
+                </div>
+                <div class="product-actions">
+                    <a href="{% url 'farmers:edit_product' product.id %}" class="btn btn-warning">Edit</a>
+                    <a href="{% url 'farmers:delete_product' product.id %}" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No products available.</p>
+    <a href="{% url 'farmers:upload_product' %}" class="btn btn-primary">Upload Product</a>
+{% endif %}
+
+{% endblock %}
+<style>
+    .product-actions a {
+    display: inline-block;
+    margin: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.product-actions a:hover {
+    background-color: #ffa500; /* For example, change color on hover */
+}
+
+</style>

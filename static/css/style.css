@@ -1,0 +1,455 @@
+/* Navbar Styling */
+.navbar {
+    background-color:#6495ED; /* Blue background */
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    color: #4682B4 !important; /* Orange for brand */
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    color: #000000 !important;
+    font-size: 1.1rem;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffa500 !important; /* Highlight links with orange */
+}
+
+/* For tablets and smaller screens (max-width: 768px) */
+@media (max-width: 768px) {
+  .footer-container {
+    max-width: 100%; /* Remove the max-width to allow the footer to take the full screen */
+    padding: 0 10px; /* Adjust padding */
+    flex-direction: column; /* Stack footer sections vertically */
+    text-align: center; /* Center text for better readability */
+  }
+
+/* For very small screens (max-width: 480px) */
+@media (max-width: 480px) {
+  .footer-container {
+    padding: 0 5px; /* Reduce padding on small devices */
+  }
+}
+
+ /* Login & Signup Pages */
+.login-signup-form {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+
+.login-signup-form h2 {
+    color: #004aad;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.login-signup-form .form-control {
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.login-signup-form .btn {
+    background-color: #ffa500; /* Orange button */
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.login-signup-form .btn:hover {
+    background-color: #e68a00;
+}
+
+/* Logout Page */
+.logout-message {
+    text-align: center;
+    padding: 50px 0;
+    font-size: 1.5rem;
+    color: #004aad;
+}
+
+.logout-message .btn {
+    background-color: #004aad; /* Blue button */
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.logout-message .btn:hover {
+    background-color: #003366; /* Darker blue on hover */
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* General Container Styling */
+.container {
+    padding: 30px;
+     width: 100%;
+}
+
+/* Product Detail Page */
+.product-detail {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-detail h2 {
+    font-size: 2rem;
+    color: #004aad;
+    margin-bottom: 20px;
+}
+
+.product-detail p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+.product-detail .btn {
+    background-color: #ffa500; /* Orange button */
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.product-detail .btn:hover {
+    background-color: #e68a00; /* Darker orange on hover */
+}
+
+
+/* Cart Page */
+.cart-summary {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-summary h3 {
+    color: #004aad;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.cart-summary p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.cart-summary .btn {
+    background-color: #ffa500; /* Orange button */
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cart-summary .btn:hover {
+    background-color: #e68a00;
+}
+
+/* Cart Item List */
+.cart-items li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.1rem;
+}
+
+.cart-items li .btn-danger {
+    background-color: #dc3545; /* Red remove button */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cart-items li .btn-danger:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Checkout Form */
+.checkout-form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-form h2 {
+    color: #004aad;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.checkout-form .form-control {
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.checkout-form .btn {
+    background-color: #ffa500; /* Orange button */
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-form .btn:hover {
+    background-color: #e68a00;
+}
+
+/* Thank You Page */
+.thank-you {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.thank-you h2 {
+    font-size: 2rem;
+    color: #004aad;
+    margin-bottom: 20px;
+}
+
+.thank-you p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.thank-you .btn {
+    background-color: #ffa500; /* Orange button */
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.thank-you .btn:hover {
+    background-color: #e68a00;
+}
+
+/* Empty Cart Page */
+.empty-cart-message {
+    text-align: center;
+    padding: 50px 0;
+    font-size: 1.5rem;
+    color: #004aad;
+}
+
+.empty-cart-message a {
+    background-color: #004aad; /* Blue button */
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.empty-cart-message a:hover {
+    background-color: #003366; /* Darker blue on hover */
+}
+/* Light Theme (Default) */
+body {
+    background-color: #ffffff; /* Light background */
+    color: #333333; /* Dark text */
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header, footer {
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Links */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Dark Theme */
+body.dark-theme {
+    background-color: #121212; /* Dark background */
+    color: #eaeaea; /* Light text for dark theme */
+}
+
+body.dark-theme header,
+body.dark-theme footer {
+    background-color: #1c1c1c;
+    color: #eaeaea;
+}
+
+body.dark-theme button {
+    background-color: #4caf50; /* Green button in dark mode */
+    color: #fff;
+}
+
+body.dark-theme button:hover {
+    background-color: #45a049;
+}
+
+body.dark-theme a {
+    color: #4caf50; /* Green links in dark mode */
+}
+
+body.dark-theme a:hover {
+    color: #80e27e; /* Lighter green when hovering over links */
+}
+
+/* Additional Styling for a Modern Look */
+header h1, main h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+main p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+/* Optional: Box shadow for modern look */
+body.dark-theme main,
+body.dark-theme header,
+body.dark-theme footer {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.6); /* Blue focus outline */
+}
+
+     /* Resize the carousel control buttons */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            width: 30px;   /* Smaller size */
+            height: 30px;  /* Smaller size */
+            background-size: 100%; /* Adjust the icon to the new size */
+        }
+
+        /* Optional: Adjust the button size as well */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 40px;  /* Smaller buttons */
+            height: 40px; /* Smaller buttons */
+        }
+
+        /* Optional: Style the carousel control buttons */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: black;  /* Optional: Dark color for better visibility */
+        }
+
+
+/* Full-width footer container */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  width: 100%; /* Ensure footer spans the full width */
+}
+
+.footer-container {
+  max-width: 1200px; /* Set a max-width for large screens */
+  margin: 0 auto; /* Center the container horizontally */
+  display: flex;
+  justify-content: space-between; /* Distribute sections evenly */
+  padding: 0 20px;
+  width: 100%; /* Ensure it stretches across the screen */
+  box-sizing: border-box;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+
+
+footer p {
+    font-size: 0.9rem;
+    margin: 10px 0;
+}
+/* Styling for individual sections */
+.footer-left, .footer-center, .footer-right {
+  flex: 1;
+  padding: 10px;
+}
+
+.footer-center {
+  text-align: center;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+
+
+  .footer-left, .footer-center, .footer-right {
+    flex: 1;
+    padding: 10px;
+  }
+}
+
+
+

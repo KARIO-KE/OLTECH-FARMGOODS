@@ -1,0 +1,164 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- Main Content -->
+    <div class="container content">
+
+        <h2 class="text-center my-4 text-primary">Account Settings</h2>
+
+        <!-- Change Language -->
+        <div class="section-header mb-4">
+            <h4 class="text-dark">Change Language</h4>
+            <form>
+                <div class="mb-3">
+                    <label for="language" class="form-label">Select Language</label>
+                    <select class="form-select" id="language">
+                        <option value="en" selected>English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <!-- Add other languages here -->
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-warning">Save Language</button>
+            </form>
+        </div>
+
+        <!-- Change Username -->
+        <div class="section-header mb-4">
+            <h4 class="text-dark">Change Username</h4>
+            <form>
+                <div class="mb-3">
+                    <label for="username" class="form-label">New Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter your new username">
+                </div>
+                <button type="submit" class="btn btn-warning">Save Username</button>
+            </form>
+        </div>
+
+        <!-- Change Password -->
+        <div class="section-header mb-4">
+            <h4 class="text-dark">Change Password</h4>
+            <form>
+                <div class="mb-3">
+                    <label for="old-password" class="form-label">Old Password</label>
+                    <input type="password" class="form-control" id="old-password" placeholder="Enter your old password">
+                </div>
+                <div class="mb-3">
+                    <label for="new-password" class="form-label">New Password</label>
+                    <input type="password" class="form-control" id="new-password" placeholder="Enter your new password">
+                </div>
+                <button type="submit" class="btn btn-warning">Save Password</button>
+            </form>
+        </div>
+
+        <!-- Account Information -->
+        <div class="section-header mb-4">
+            <h4 class="text-dark">Account Information</h4>
+            <form>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                </div>
+                <div class="mb-3">
+                    <label for="profile-photo" class="form-label">Profile Photo</label>
+                    <input type="file" class="form-control" id="profile-photo">
+                </div>
+                <button type="submit" class="btn btn-warning">Save Account Information</button>
+            </form>
+        </div>
+
+        <!-- Password & Security -->
+        <div class="section-header mb-4">
+            <h4 class="text-dark">Password & Security</h4>
+            <form>
+                <div class="mb-3">
+                    <label for="two-factor" class="form-label">Enable Two-Factor Authentication</label>
+                    <input type="checkbox" id="two-factor" class="form-check-input">
+                    <label class="form-check-label" for="two-factor">Enable 2FA</label>
+                </div>
+                <button type="submit" class="btn btn-warning">Save Security Settings</button>
+            </form>
+        </div>
+
+        <!-- Notifications -->
+        <div class="section-header mb-4">
+            <h4 class="text-dark">Notifications</h4>
+            <form>
+                <div class="mb-3">
+                    <label for="notification-email" class="form-label">Email Notifications</label>
+                    <input type="checkbox" id="notification-email" class="form-check-input">
+                    <label class="form-check-label" for="notification-email">Receive notifications via email</label>
+                </div>
+                <div class="mb-3">
+                    <label for="notification-sms" class="form-label">SMS Notifications</label>
+                    <input type="checkbox" id="notification-sms" class="form-check-input">
+                    <label class="form-check-label" for="notification-sms">Receive notifications via SMS</label>
+                </div>
+                <button type="submit" class="btn btn-warning">Save Notifications</button>
+            </form>
+        </div>
+
+        <!-- Privacy Controls -->
+        <div class="section-header mb-4">
+            <h4 class="text-dark">Privacy Controls</h4>
+            <form>
+                <div class="mb-3">
+                    <label for="data-sharing" class="form-label">Allow Data Sharing</label>
+                    <input type="checkbox" id="data-sharing" class="form-check-input">
+                    <label class="form-check-label" for="data-sharing">Allow your data to be shared with third-party services</label>
+                </div>
+                <button type="submit" class="btn btn-warning">Save Privacy Settings</button>
+            </form>
+        </div>
+
+        <!-- App Preferences -->
+        <div class="section-header mb-4">
+            <h4 class="text-dark">App Preferences</h4>
+            <form>
+                <div class="mb-3">
+                    <label for="theme" class="form-label">App Theme</label>
+                    <select class="form-select" id="theme">
+                        <option value="light" selected>Light Mode</option>
+                        <option value="dark">Dark Mode</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="timezone" class="form-label">Time Zone</label>
+                    <select class="form-select" id="timezone">
+                        <option value="UTC">UTC</option>
+                        <option value="EST">EST</option>
+                        <option value="PST">PST</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-warning">Save Preferences</button>
+            </form>
+        </div>
+
+        <!-- Integrations -->
+        <div class="section-header mb-4">
+            <h4 class="text-dark">Integrations</h4>
+            <form>
+                <div class="mb-3">
+                    <label for="third-party" class="form-label">Connect to Third-Party Apps</label>
+                    <select class="form-select" id="third-party">
+                        <option value="google">Google</option>
+                        <option value="facebook">Facebook</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-warning">Save Integrations</button>
+            </form>
+        </div>
+
+        <!-- Billing and Subscription Details -->
+        <div class="section-header mb-4">
+            <h4 class="text-dark">Billing & Subscription</h4>
+            <p>Current Plan: Premium</p>
+            <p>Subscription Period: Monthly</p>
+            <button class="btn btn-danger">Cancel Subscription</button>
+            <button class="btn btn-warning">Update Payment Information</button>
+        </div>
+
+    </div>
+{% endblock %}
+

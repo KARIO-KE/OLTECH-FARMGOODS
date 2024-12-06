@@ -1,0 +1,38 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="container">
+    {% if cart_items %}
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Your Cart</h2>
+                <ul class="list-group">
+                    {% for item in cart_items %}
+                        <li class="list-group-item">
+                            {{ item.product.name }} - KSh {{ item.product.price }} x {{ item.quantity }}
+                            <form method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h3>Cart Summary</h3>
+                <p>Total: KSh {{ total_price }}</p>
+                <a href="{% url 'cart:checkout' %}" class="btn btn-success">Checkout</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <div class="alert alert-warning">
+                    <p>{{ empty_cart_message }}</p>
+                </div>
+                <a href="{% url 'shop:product_list' %}" class="btn btn-warning">Go Shop</a>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

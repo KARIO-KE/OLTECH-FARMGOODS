@@ -1,0 +1,56 @@
+<!-- farmers/templates/farmers/view_product.html -->
+
+{% extends 'farm_generic.html' %}
+
+{% block content %}
+  <h2>{{ product.name }}</h2>
+  <img src="{{ product.image.url }}" alt="{{ product.name }}">
+  <p>{{ product.description }}</p>
+  <p>Price: ${{ product.price }}</p>
+
+  <div class="button-container">
+    <a href="{% url 'farmers:edit_product' product.id %}" class="button edit">Edit</a>
+    <a href="{% url 'farmers:delete_product' product.id %}" class="button delete">Delete</a>
+    <a href="{% url 'farmers:submit_product' product.id %}" class="button submit">Submit</a>
+  </div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+  .button-container {
+    display: flex;
+    gap: 10px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .button.edit {
+    background-color: blue;
+    color: white;
+  }
+  .button.edit:hover {
+    background-color: darkblue;
+  }
+
+  .button.delete {
+    background-color: red;
+    color: white;
+  }
+  .button.delete:hover {
+    background-color: darkred;
+  }
+
+  .button.submit {
+    background-color: green;
+    color: white;
+  }
+  .button.submit:hover {
+    background-color: darkgreen;
+  }
+</style>
+{% endblock %}
