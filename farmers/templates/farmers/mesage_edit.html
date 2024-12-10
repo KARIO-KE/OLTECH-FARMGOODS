@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Form</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-lightblue">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"> <img src="{% static 'images/logo.png' %}" alt="OLTech Logo" style="height:70px; width: 70px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:farmer_page' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:about' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                   <a class="nav-link"  href="{% url 'shop:product_list'  %}">Shop</a>
+
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'farmers:contact' %}">Contact</a>
+                </li>
+
+                </ul>
+
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                  <a class="nav-link" href="{% url 'cart:cart' %}"><i class="fas fa-shopping-cart">cart</i>
+                    </a>
+                <ul class="navbar-nav ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-bell"></i> Notifications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:settings' %}"><i class="bi bi-gear"></i> Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:settings' %}"><i class="bi bi-person-circle"></i> {{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="toggleTheme()"><i class="bi bi-moon"></i>Mode</a>
+                    </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="{% url 'accounts:logout' %}"><i class="bi bi-door-open"></i> Logout</a>
+                        </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="form-container">
+        <h2>{% if message %}Edit Message{% else %}Add a Message{% endif %}</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit-btn">{% if message %}Update{% else %}Submit{% endif %}</button>
+        </form>
+    </div>
+</body>
+
+  <footer class="bg-light text-center py-0">We are glad to have you as part of our team.</footer>
+<footer class="bg-dark text-white mt-2 py-2">
+    <div class="container p-1" style="max-width: 900px;">
+        <div class="row">
+            <!-- Get in touch with us - Left-aligned -->
+            <div class="col-md-4 text-start">
+                <h5 class="h6">Get in touch with us</h5>
+                <p class="mb-1">Email: info@Oltechfarmgoods.co.ke</p>
+                <p class="mb-1">Phone: (+254)768608040.</p>
+            </div>
+
+            <!-- About Us - Center-aligned -->
+            <div class="col-md-4 text-center">
+                <h5 class="h6">About Us</h5>
+                <p class="mb-1">We provide fresh farm produce to your doorstep.</p>
+            </div>
+
+            <!-- Support Us - Right-aligned -->
+            <div class="col-md-4 text-end">
+                <h5 class="h6">Support Us</h5>
+                <p class="mb-1">Your support helps farmers get their produce to markets more easily.</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-1">
+            <p class="mb-0" style="color: #FFA500;">&copy;Copyrights 2024 OLTECH FARMGOODS. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+</html>

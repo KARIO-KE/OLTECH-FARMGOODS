@@ -47,5 +47,6 @@ def checkout_view(request):
 def thank_you(request):
     return render(request, 'buyers/thank_you.html')
 
+
 def home(request):
     return render(request, 'accounts/home.html')

@@ -1,0 +1,36 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="about-section">
+        <h1 class="about-title">About Us</h1>
+
+        <div class="block-quote">
+            <blockquote>
+                "We strive to connect farmers and buyers, making sustainable farming products available to all."
+            </blockquote>
+        </div>
+
+        <div class="mission">
+            <h2>Our Mission</h2>
+            <p>Our mission is to promote sustainable farming practices by connecting farmers to buyers, ensuring quality products are available in every home. We work hard to create a seamless experience for both farmers and customers, focusing on fresh, eco-friendly goods that are ethically sourced.</p>
+        </div>
+
+        <div class="company-logo">
+            <h2>OLTECH FARM GOODS</h2>
+           <a class="navbar-brand" href="#"> <img src="{% static 'images/logo.png' %}" alt="OLTech Logo" style="height:70px; width: 70px;"></a>
+        </div>
+
+        <div class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <ul>
+                <li><strong>What products do you sell?</strong> We sell a wide range of farm products, including fresh fruits, vegetables, grains, and dairy items.</li>
+                <li><strong>How do I place an order?</strong> Simply visit our online store, select your items, and checkout securely online.</li>
+                <li><strong>Do you offer delivery?</strong> Yes, we offer delivery services to various locations. Check our delivery page for more details.</li>
+                <li><strong>Can I become a seller?</strong> Absolutely! If you're a farmer, you can sign up to sell your products through our platform.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+{% endblock %}
+

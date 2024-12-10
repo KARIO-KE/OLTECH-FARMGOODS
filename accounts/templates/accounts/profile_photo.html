@@ -1,0 +1,74 @@
+<!-- add_photo.html -->
+{% extends 'farm_generic.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Profile Photo</h2>
+
+    {% if user.profile.profile_photo %}
+        <!-- If the user already has a profile photo -->
+        <div class="text-center mb-4">
+            <img src="{{ user.profile.profile_photo.url }}" alt="Profile Photo" class="img-fluid" style="max-width: 300px;">
+        </div>
+
+        <h4 class="text-center mb-3">Change or Remove Profile Photo</h4>
+
+        <!-- Form to change the profile photo -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="POST" enctype="multipart/form-data" class="mb-3">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="photo">Upload New Profile Photo:</label>
+                        <input type="file" name="photo" id="photo" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-warning btn-block hover-effect">Change Photo</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Form to delete the profile photo -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="POST" action="{% url 'farmers:remove_photo' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-block hover-effect">Delete Photo Permanently</button>
+                </form>
+            </div>
+        </div>
+
+    {% else %}
+        <!-- If the user doesn't have a profile photo -->
+        <h4 class="text-center mb-3">Upload a Profile Photo</h4>
+
+        <!-- Form to upload the profile photo -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="photo">Upload Profile Photo:</label>
+                        <input type="file" name="photo" id="photo" class="form-control" required>
+                    </div>
+                   <button type="submit" class="btn btn-primary btn-block hover-effect" style="background-color: orange; border-color: orange;">Upload</button>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Back button to take user to the profile page -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-6">
+         <a href="{% url 'farmers:farmer_page' %}" class="btn btn-block hover-effect" style="background-color: blue; color: white;">Back to Profile</a>
+        </div>
+    </div>
+</div>
+
+<!-- Custom CSS for Hover Effect -->
+<style>
+    .hover-effect:hover {
+        opacity: 0.8;
+        transition: opacity 0.3s ease-in-out;
+    }
+</style>
+{% endblock %}

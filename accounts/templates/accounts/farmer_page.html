@@ -1,9 +1,121 @@
-{% extends 'base_generic.html' %}
+{% extends 'farm_generic.html' %}
+{% load static %}
 
 {% block content %}
-<h2>Welcome, {{ user.username }}!</h2>
-<a href="{% url 'farmers:upload_product' %}" class="btn btn-primary">Upload a Product</a>
-    <a href="{% url 'farmers:view_product'  %}" class="btn btn-secondary">view Product</a>
-<a href="{% url 'farmers:edit_product' %}" class="btn btn-secondary">Edit a Product</a>
-<a href="{% url 'accounts:logout' %}" class="btn btn-danger">Logout</a>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <!-- Left-aligned content -->
+    <div>
+        <h2>Welcome, {{ user.username }}!</h2>
+
+        <!-- Profile Section -->
+        <div class="profile-section">
+            {% if user.profile.photo %}
+                <!-- If the user has successfully uploaded a profile photo, display it -->
+                <img src="{{ user.profile.photo.url }}" alt="Profile Photo" class="profile-photo">
+                <div>
+                    <a href="{% url 'accounts:add_photo' %}" class="btn" style="background-color: orange; color: white; font-size: 12px; padding: 5px 10px;">Change/Remove Photo</a>
+                </div>
+            {% else %}
+                <!-- If the user has not uploaded a profile photo, prompt them to add one -->
+                <p>No profile photo available</p>
+                <a href="{% url 'accounts:add_photo' %}" class="btn btn-success">Add Photo</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="button-container">
+        <a href="{% url 'farmers:upload_product' %}" class="btn btn-primary animated-button">Upload a Product</a>
+        <a href="{% url 'accounts:farmer_detail' %}" class="btn btn-secondary animated-button">View farmer Message</a>
+        <a href="{% url 'farmers:upload_message' %}" class="btn btn-secondary animated-button">Add a Message</a>
+        <a href="{% url 'farmers:success_message' %}" class="btn btn-secondary animated-button">View Message</a>
+        <a href="{% url 'accounts:logout' %}" class="btn btn-danger animated-button">Logout</a>
+    </div>
+
+    <div style="text-align: right; margin-top: 20px; width: 300px; height: auto;">
+        <img src="/static/images/logo.png" alt="Oltech Logo" class="oltech-logo" style="width: 200px; height: auto;">
+        <blockquote style="text-align: right;">
+            "Dear Farmer, your hard work and dedication shape the future of our industry. Every seed you plant, every harvest you gather, is a testament to your resilience and passion. Keep pushing forward—your efforts not only nourish the land but inspire generations to come. Stay strong! Keep growing, keep improving. You're making a difference!"
+        </blockquote>
+
+        <p class="mb-0"><span style="color: blue;">~OLTECH</span> <span style="color: orange;">FARM</span> <span style="color: black;">GOODS</span></p>
+    </div>
+</div>
+
+<!-- Buttons for managing products, messages, and logout -->
+
+<style>
+    /* Profile photo styling */
+    .profile-photo {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    .profile-section {
+        margin-bottom: 20px;
+    }
+
+    /* Container for the buttons */
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Basic button styles */
+    .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Hover effect for buttons */
+    .animated-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Animation for fading in the button container */
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    /* Bounce animation for buttons */
+    @keyframes bounce {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+
+    /* Optional: Add a delay or additional hover effects for specific buttons */
+    .animated-button {
+        animation: bounce 1s infinite;
+    }
+
+    .btn-primary:hover {
+        background-color: #007bff;
+    }
+
+    .btn-secondary:hover {
+        background-color: #6c757d;
+    }
+
+    .btn-danger:hover {
+        background-color: #dc3545;
+    }
+
+    /* Oltech logo styling */
+    .oltech-logo {
+        width: 150px;
+        margin-bottom: 10px;
+    }
+</style>
+
 {% endblock %}

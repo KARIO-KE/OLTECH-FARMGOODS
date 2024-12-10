@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('accounts', '0005_customuser_role'),
     ]
@@ -58,7 +57,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='customuser',
             name='role',
-            field=models.CharField(choices=[('admin', 'Admin'), ('farmer', 'Farmer'), ('buyer', 'Buyer')], default='buyer', max_length=10),
+            field=models.CharField(choices=[('admin', 'Admin'), ('farmer', 'Farmer'), ('buyer', 'Buyer')],
+                                   default='buyer', max_length=10),
         ),
         migrations.DeleteModel(
             name='Profile',

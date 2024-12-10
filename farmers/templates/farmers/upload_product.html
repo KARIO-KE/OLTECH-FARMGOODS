@@ -1,10 +1,103 @@
 {% extends "farm_generic.html" %}
 
 {% block content %}
-<h2>Upload Product</h2>
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Submit</button>
-</form>
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="card shadow-lg p-4 rounded-3" style="max-width: 500px; width: 100%; transition: transform 0.3s ease-in-out;">
+            <h4 class="text-center mb-4">Product Upload Form</h4>
+            <form method="POST" enctype="multipart/form-data" id="product-upload-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <a href="{% url 'accounts:farmer_page' %}" class="btn btn-primary mx-2">Return to Home</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Success Message -->
+    <div class="modal fade" id="uploadSuccessModal" tabindex="-1" aria-labelledby="uploadSuccessModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadSuccessModalLabel">Upload Successful</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Your product has been uploaded successfully!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Proceed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .card {
+            max-width: 500px;
+            width: 100%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            margin: 5px;
+        }
+
+        /* Responsive modal */
+        @media (max-width: 576px) {
+            .modal-dialog {
+                max-width: 90%;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        const productUploadForm = document.getElementById("product-upload-form");
+
+        productUploadForm.addEventListener("submit", function(event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            const formData = new FormData(productUploadForm);
+
+            fetch('', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success modal on successful upload
+                    const modal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
+                    modal.show();
+
+                    // Redirect after 5 seconds
+                    setTimeout(function() {
+                        window.location.href = '{% url "accounts:farmer_page" %}';
+                    }, 5000); // 5000ms = 5 seconds
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
 {% endblock %}

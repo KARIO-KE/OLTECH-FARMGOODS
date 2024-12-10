@@ -1,0 +1,29 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Farmer's Message Detail</h1>
+
+    <!-- Display Farmer's Full Message -->
+    <div class="message-detail-box p-4 border rounded shadow-lg bg-light">
+        <h3><strong>{{ farmer.username }}</strong></h3>
+        <p><strong>Category:</strong> {{ farmer.category }}</p>
+        <p><strong>Short Message:</strong> {{ farmer.short_message }}</p>
+        <p><strong>Full Message:</strong></p>
+        <p>{{ farmer.full_message }}</p> <!-- Full message of the farmer -->
+        
+        {% if farmer.image %}
+            <div class="mt-3">
+                <h5>Attached Image:</h5>
+                <img src="{{ farmer.image.url }}" alt="Message Image" class="img-fluid">
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+    </div>
+</div>
+
+{% endblock %}

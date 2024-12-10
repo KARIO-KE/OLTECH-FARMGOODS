@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('farmers', '0003_product_owner_alter_product_user'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
@@ -16,6 +15,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='product',
             name='owner',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='farmer_products', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='farmer_products',
+                                    to=settings.AUTH_USER_MODEL),
         ),
     ]

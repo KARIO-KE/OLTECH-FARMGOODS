@@ -1,73 +1,139 @@
 {% extends 'base_generic.html' %}
+{% load static %}
 
 {% block content %}
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <!-- Left-aligned content -->
+        <div>
+            <h2>Welcome, {{ user.username }}!</h2>
 
-<div class="container mt-5">
-    <h4>Category Sections</h4>
-    <div class="row">
-        <!-- All Category -->
-        <div class="col-6 col-md-2">
-            <div class="category-icon text-center">
-                <i class="fas fa-th-large fa-2x"></i>  <!-- Icon for "All" -->
-                <p>All</p>
+            <!-- Profile Section -->
+            <div class="profile-section">
+                {% if user.profile.photo %}
+                    <!-- If the user has successfully uploaded a profile photo, display it -->
+                    <img src="{{ user.profile.photo.url }}" alt="Profile Photo" class="profile-photo">
+                    <div>
+                        <a href="{% url 'accounts:add_photo' %}" class="btn"
+                           style="background-color: orange; color: white; font-size: 12px; padding: 5px 10px;">Change/Remove
+                            Photo</a>
+                    </div>
+                {% else %}
+                    <!-- If the user has not uploaded a profile photo, prompt them to add one -->
+                    <p>No profile photo available</p>
+                    <a href="{% url 'accounts:add_photo' %}" class="btn btn-success">Add Photo</a>
+                {% endif %}
             </div>
         </div>
-
-        <!-- Fruits Category -->
-        <div class="col-6 col-md-2">
-            <div class="category-icon text-center">
-                <i class="fas fa-apple-alt fa-2x"></i> <!-- Icon for "Fruits" -->
-                <p>Fruits</p>
-            </div>
+        <div class="button-container">
+            <img src="/static/images/logo.png" alt="Oltech Logo" class="oltech-logo"
+                 style="width: 300px; height: auto;">
         </div>
 
-        <!-- Vegetables Category -->
-        <div class="col-6 col-md-2">
-            <div class="category-icon text-center">
-                <i class="fas fa-carrot fa-2x"></i>  <!-- Icon for "Vegetables" -->
-                <p>Vegetables</p>
-            </div>
-        </div>
 
-        <!-- Grains Category -->
-        <div class="col-6 col-md-2">
-            <div class="category-icon text-center">
-                <i class="fas fa-seedling fa-2x"></i>  <!-- Icon for "Grains" -->
-                <p>Grains</p>
-            </div>
-        </div>
+        <div style="text-align: right; margin-top: 20px; width: 300px; height: auto;">
 
-        <!-- Legumes Category -->
-        <div class="col-6 col-md-2">
-            <div class="category-icon text-center">
-                <i class="fas fa-pepper-hot fa-2x"></i>  <!-- Icon for "Legumes" -->
-                <p>Legumes</p>
-            </div>
+            <blockquote style="text-align: right;">
+               Thank you for visiting our store! We’re delighted to have you here. Explore our wide variety of products, from fresh, delicious fruits to high-quality grains. Whether you’re cooking, baking, or snacking, we’ve got something special for you. Happy shopping, and we hope you find exactly what you need!
+            </blockquote>
+
+            <p class="mb-0"><span style="color: blue;">~OLTECH</span> <span style="color: orange;">FARM</span> <span
+                    style="color: black;">GOODS</span></p>
         </div>
     </div>
-</div>
+
+    <a href="{% url 'accounts:contact' %}" class="btn btn-primary animated-button">Contact Us</a>
+    <a href="{% url 'accounts:about' %}" class="btn btn-secondary animated-button">About Us</a>
+    <a href="{% url 'shop:product_list' %}" class="btn btn-secondary animated-button">View Shop</a>
+    <a href="{% url 'accounts:farmer_detail' %}" class="btn btn-secondary animated-button">View Farmer Message</a>
+    <a href="{% url 'accounts:logout' %}" class="btn btn-danger animated-button">Logout</a>
 
 
-    <!-- Farm Goods Products Section -->
-    <h5 class="text-center mt-4">Farm Goods Products</h5>
-    <div id="products" class="row">
-        {% for product in products %}
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                <div class="card-body">
-                    <h5 class="card-title text-center">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.description }}</p>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Price: ${{ product.price }}</li>
-                        <li class="list-group-item">Quantity Available: {{ product.quantity_available }}</li>
-                        <li class="list-group-item">Owner: {{ product.owner.username }}</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
+
+
+
+    <style>
+        /* Profile photo styling */
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .profile-section {
+            margin-bottom: 20px;
+        }
+
+        /* Container for the buttons */
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Basic button styles */
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Hover effect for buttons */
+        .animated-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animation for fading in the button container */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Bounce animation for buttons */
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Optional: Add a delay or additional hover effects for specific buttons */
+        .animated-button {
+            animation: bounce 1s infinite;
+        }
+
+        .btn-primary:hover {
+            background-color: #007bff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #6c757d;
+        }
+
+        .btn-danger:hover {
+            background-color: #dc3545;
+        }
+
+        /* Oltech logo styling */
+        .oltech-logo {
+            width: 150px;
+            margin-bottom: 10px;
+        }
+    </style>
+
 {% endblock %}
-

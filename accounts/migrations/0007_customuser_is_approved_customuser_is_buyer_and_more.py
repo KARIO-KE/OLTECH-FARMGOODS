@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('accounts', '0006_remove_customuser_country_remove_customuser_county_and_more'),
     ]

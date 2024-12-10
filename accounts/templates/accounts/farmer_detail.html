@@ -1,0 +1,235 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <!-- Define a list of farmers with their details -->
+<script type="text/javascript">
+    const farmers = [
+        {
+            name: "Amina Mumbi",
+            image_url: "/static/images/farmer 1.jpeg",
+            short_message: "Fresh produce from our farm!",
+            full_message: "We are a family-run farm committed to delivering fresh and organic produce straight from our fields to your table. We take pride in sustainable farming practices, ensuring that the environment and our community thrive together."
+        },
+        {
+            name: "Robert Farm",
+            image_url: "/static/images/farmer 2.jpeg",
+            short_message: "Healthy crops, healthy life.",
+            full_message: "Our farm grows a variety of vegetables and fruits, all grown with care and attention. We use eco-friendly methods to ensure that our crops are not only delicious but also safe and healthy for you and your family."
+        },
+        {
+            name: "Benson Kibet",
+            image_url: "/static/images/farmer 3.jpeg",
+            short_message: "From our farm to your kitchen!",
+            full_message: "We specialize in heirloom vegetables and unique fruits that are grown with organic methods. Our goal is to bring high-quality, fresh produce to local markets, and we are always striving to innovate with new and exciting crops."
+        },
+        {
+            name: "Ndegwa Karanja",
+            image_url: "/static/images/farmer 4.jpeg",
+            short_message: "Farm-fresh dairy products!",
+            full_message: "Our dairy cows are grass-fed and produce the freshest milk, cheese, and butter. We believe in producing wholesome dairy products using traditional methods for the best taste and quality."
+        },
+        {
+            name: "Mwende Mutua",
+            image_url: "/static/images/farmer 5.jpeg",
+            short_message: "Locally grown herbs and spices.",
+            full_message: "We grow a variety of herbs and spices that add flavor to your meals. Our farm is dedicated to providing you with fresh, aromatic ingredients for your culinary adventures."
+        },
+        {
+            name: "Nashipai Lempurkel",
+            image_url: "/static/images/farmer 6.jpeg",
+            short_message: "Free-range eggs from happy chickens.",
+            full_message: "Our chickens live in a free-range environment where they have access to plenty of space to roam, resulting in healthy, delicious eggs that you can feel good about eating."
+        },
+        {
+            name: "Muthoni Wairimu",
+            image_url: "/static/images/farmer 7.jpeg",
+            short_message: "Organic fruits and vegetables.",
+            full_message: "We focus on growing organic, non-GMO fruits and vegetables with an emphasis on sustainable farming methods that nourish both the land and your body."
+        },
+        {
+            name: "Kendi Mutiso",
+            image_url: "/static/images/farmer 8.jpeg",
+            short_message: "Sustainably grown grains and legumes.",
+            full_message: "Our farm is committed to producing high-quality grains and legumes through sustainable farming practices. From our fields to your pantry, we aim to provide healthy, nutritious food."
+        },
+        {
+            name: "Wanjiku Njoroge",
+            image_url: "/static/images/farmer 9.jpeg",
+            short_message: "Exotic fruits direct from the farm.",
+            full_message: "We specialize in growing unique, exotic fruits that you won’t find anywhere else. Our farm offers fresh, seasonal fruits that are perfect for anyone looking to try something new."
+        },
+        {
+            name: "Musa Ndungu",
+            image_url: "/static/images/farmer 10.jpeg",
+            short_message: "Freshly grown vegetables and herbs.",
+            full_message: "We pride ourselves on growing a wide variety of vegetables and herbs, carefully cultivated to deliver the freshest and healthiest produce right to your table."
+        },
+        {
+            name: "Wambui Kamau",
+            image_url: "/static/images/farmer 11.jpeg",
+            short_message: "Naturally raised livestock products.",
+            full_message: "Our animals are raised in a natural environment where they roam freely, leading to healthier, tastier meat and dairy products for our customers."
+        },
+        {
+            name: "Cheruiyot Kiplagat",
+            image_url: "/static/images/farmer 12.jpeg",
+            short_message: "Traditional farm-to-table practices.",
+            full_message: "We embrace traditional farming methods and offer a farm-to-table experience, providing fresh, high-quality products grown with care and respect for nature."
+        },
+        {
+            name: "Gideon Kiprotich",
+            image_url: "/static/images/farmer 13.jpeg",
+            short_message: "Small batch honey and preserves.",
+            full_message: "Our bees produce the most exquisite honey, and we also craft small batch jams, jellies, and preserves that highlight the flavors of our local fruits."
+        },
+        {
+            name: "Njoki Gichuki",
+            image_url: "/static/images/farmer 14.jpeg",
+            short_message: "Handcrafted artisanal cheeses.",
+            full_message: "Our cheeses are made from the highest quality milk produced on our farm. Each batch is handcrafted to ensure unique flavors and textures that you won’t find in stores."
+        },
+        {
+            name: "Kamau Ndungu",
+            image_url: "/static/images/farmer 15.jpeg",
+            short_message: "Fresh cut flowers and bouquets.",
+            full_message: "We grow a wide variety of flowers, hand-cut every morning, and create beautiful bouquets perfect for any occasion. Our flowers are grown with love and care."
+        },
+        {
+            name: "Omondi Okoth",
+            image_url: "/static/images/farmer 16.jpeg",
+            short_message: "Wild-caught fish straight from the source.",
+            full_message: "We fish in the cleanest waters, offering fresh, wild-caught fish that is delivered to you within hours of being caught. Taste the difference of truly fresh fish!"
+        },
+        {
+            name: "Benson Kibet",
+            image_url: "/static/images/farmer 17.jpeg",
+            short_message: "All-natural homemade jams and syrups.",
+            full_message: "We create delicious, all-natural jams and syrups made from the fruits grown on our farm. These homemade products bring the flavors of the farm to your home."
+        },
+        {
+            name: "Kipchirchir Tanui",
+            image_url: "/static/images/farmer 18.jpeg",
+            short_message: "Sustainable mushrooms and fungi.",
+            full_message: "Our farm is known for growing a variety of gourmet mushrooms, cultivated in a sustainable manner that supports the environment and provides top-quality produce."
+        },
+        {
+            name: "Juma Mwangi",
+            image_url: "/static/images/farmer 19.jpeg",
+            short_message: "Premium grass-fed beef.",
+            full_message: "Our cattle are grass-fed and raised with the utmost care. We produce premium beef that is tender, flavorful, and full of nutrients."
+        },
+        {
+            name: "Otieno Ochieng",
+            image_url: "/static/images/farmer 20.jpeg",
+            short_message: "Freshly baked bread and pastries.",
+            full_message: "We bake bread and pastries daily using the freshest ingredients from our farm, creating delicious, wholesome baked goods that are perfect for any meal."
+        }
+    ];
+</script>
+
+
+    <!-- Loop through the farmers data to display their information -->
+    <div class="row">
+        <!-- Loop through farmers in JavaScript -->
+        <div id="farmer-cards-container" class="row row-cols-1 row-cols-md-3 g-4"></div>
+    </div>
+
+    <!-- Modal Template for Farmer Details -->
+    <div class="modal fade" id="farmerModalTemplate" tabindex="-1" role="dialog" aria-labelledby="farmerModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="farmerModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="farmer-modal-image" class="img-fluid rounded-circle mb-3" alt="Farmer Image">
+                    <p><strong>Title:</strong> <span id="farmer-modal-short-message"></span></p>
+                    <p><strong>Full Message:</strong> <span id="farmer-modal-full-message"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to dynamically create farmer cards and modals
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.getElementById('farmer-cards-container');
+        farmers.forEach((farmer, index) => {
+            // Create farmer card
+            const card = document.createElement('div');
+            card.classList.add('col'); // For responsive columns in a row
+            card.classList.add('mb-4'); // Margin for spacing
+            card.innerHTML = `
+                <div class="farmer-detail card" style="width: 18rem;">
+                   <img src="${farmer.image_url}" class="profile-photo" alt="${farmer.name}'s image" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;">
+                    <div class="card-body">
+                        <h5 class="card-title">${farmer.name}</h5>
+                        <p><strong>Title:</strong> ${farmer.short_message}</p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#farmerModal${index}">
+                            View Farmer Message
+                        </button>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+
+            // Create modal for the farmer
+            const modal = document.createElement('div');
+            modal.classList.add('modal', 'fade');
+            modal.id = `farmerModal${index}`;
+            modal.setAttribute('tabindex', '-1');
+            modal.setAttribute('role', 'dialog');
+            modal.setAttribute('aria-labelledby', `farmerModalLabel${index}`);
+            modal.setAttribute('aria-hidden', 'true');
+            modal.innerHTML = `
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="farmerModalLabel${index}">${farmer.name}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                           <img src="${farmer.image_url}" class="profile-photo" alt="${farmer.name}'s image" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;">
+                            <p><strong>Title:</strong> ${farmer.short_message}</p>
+                            <p><strong>Message:</strong> ${farmer.full_message}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        });
+    });
+</script>
+
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<style>
+/* Profile photo styling */
+.profile-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+</style>
+{% endblock %}

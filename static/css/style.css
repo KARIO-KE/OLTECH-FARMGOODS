@@ -403,52 +403,15 @@ button:focus {
             background-color: black;  /* Optional: Dark color for better visibility */
         }
 
-
-/* Full-width footer container */
-.footer {
-  background-color: #333;
-  color: white;
-  padding: 20px 0;
-  width: 100%; /* Ensure footer spans the full width */
-}
-
-.footer-container {
-  max-width: 1200px; /* Set a max-width for large screens */
-  margin: 0 auto; /* Center the container horizontally */
-  display: flex;
-  justify-content: space-between; /* Distribute sections evenly */
-  padding: 0 20px;
-  width: 100%; /* Ensure it stretches across the screen */
-  box-sizing: border-box;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-}
-
-
-
-footer p {
-    font-size: 0.9rem;
-    margin: 10px 0;
-}
-/* Styling for individual sections */
-.footer-left, .footer-center, .footer-right {
-  flex: 1;
-  padding: 10px;
-}
-
-.footer-center {
-  text-align: center;
-}
-
-.footer-right {
-  text-align: right;
-}
-
-
-
-  .footer-left, .footer-center, .footer-right {
-    flex: 1;
-    padding: 10px;
-  }
+   footer {
+        background-color: #343a40;
+        color: white;
+        padding: 1rem;
+        width: 100%;
+        position: absolute; /* Makes footer stick at the bottom */
+        bottom: 0; /* Stick it to the bottom of the page */
+        left: 0;
+    }
 }
 
 

@@ -1,38 +1,43 @@
 {% extends 'base_generic.html' %}
+{% load customs_filters %}
 
 {% block content %}
-<div class="container">
-    {% if cart_items %}
-        <div class="row">
-            <div class="col-md-8">
-                <h2>Your Cart</h2>
-                <ul class="list-group">
-                    {% for item in cart_items %}
-                        <li class="list-group-item">
-                            {{ item.product.name }} - KSh {{ item.product.price }} x {{ item.quantity }}
-                            <form method="POST" style="display:inline;">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger">Remove</button>
-                            </form>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h3>Cart Summary</h3>
-                <p>Total: KSh {{ total_price }}</p>
-                <a href="{% url 'cart:checkout' %}" class="btn btn-success">Checkout</a>
-            </div>
-        </div>
-    {% else %}
-        <div class="row justify-content-center">
-            <div class="col-md-6 text-center">
-                <div class="alert alert-warning">
-                    <p>{{ empty_cart_message }}</p>
-                </div>
-                <a href="{% url 'shop:product_list' %}" class="btn btn-warning">Go Shop</a>
-            </div>
-        </div>
-    {% endif %}
-</div>
+<h2>Your Cart</h2>
+
+{% if cart_items %}
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td><img src="{{ item.image }}" alt="{{ item.name }}" width="100"></td>
+                    <td>${{ item.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>${{ item.price|floatformat:2|multiply:item.quantity|floatformat:2 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Total Price: ${{ total_price|floatformat:2 }}</h3>
+    <p>Delivery Fee (20%): ${{ total_price|multiply:0.20|floatformat:2 }}</p>
+    <h3>Grand Total: ${{ total_price|multiply:1.20|floatformat:2 }}</h3>
+
+    <button>Proceed to Checkout</button>
+{% else %}
+    <p>{{ empty_cart_message }}</p>
+    <a href="{% url 'shop:product_list' %}">
+    <button style="background-color: #ffa500; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 8px;">Go to Shop</button>
+</a>
+
+{% endif %}
 {% endblock %}

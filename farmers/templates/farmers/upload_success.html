@@ -1,18 +1,27 @@
-<!-- farmers/templates/farmers/view_product.html -->
-
 {% extends 'farm_generic.html' %}
 
 {% block content %}
-  <h2>{{ product.name }}</h2>
-  <img src="{{ product.image.url }}" alt="{{ product.name }}">
-  <p>{{ product.description }}</p>
-  <p>Price: ${{ product.price }}</p>
+  <h2>Product List</h2>
 
-  <div class="button-container">
-    <a href="{% url 'farmers:edit_product' product.id %}" class="button edit">Edit</a>
-    <a href="{% url 'farmers:delete_product' product.id %}" class="button delete">Delete</a>
-    <a href="{% url 'farmers:submit_product' product.id %}" class="button submit">Submit</a>
-  </div>
+  {% for product in products %}
+    <div class="product-item">
+      <h3>{{ product.name }}</h3>
+      <img src="{{ product.image.url }}" alt="{{ product.name }}">
+      <p>{{ product.description }}</p>
+      <p>Price: ${{ product.price }}</p>
+
+      <div class="button-container">
+        <!-- Submit to Home -->
+        <a href="{% url 'farmers:submit_to_home' product.pk %}" class="button submit">Submit to Home</a>
+
+        <!-- Edit Product -->
+        <a href="{% url 'farmers:edit_product' product.pk %}" class="button edit">Edit</a>
+
+        <!-- Delete Product -->
+        <a href="{% url 'farmers:delete_product' product.pk %}" class="button delete">Delete</a>
+      </div>
+    </div>
+  {% endfor %}
 {% endblock %}
 
 {% block extra_css %}

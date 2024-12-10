@@ -26,14 +26,12 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('farmers/', include('farmers.urls')),
     path('buyers/', include('buyers.urls')),
-   path('cart/', include('cart.urls')),
-   # path('product/', include('product.urls')),
+    path('cart/', include('cart.urls')),
+    # path('product/', include('product.urls')),
     path('', views.main_page, name='main'),
-   path('shop/', include('shop.urls')),
+    path('shop/', include('shop.urls')),
 
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-

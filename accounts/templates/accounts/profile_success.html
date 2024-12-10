@@ -1,0 +1,48 @@
+<!-- profile_success.html -->
+
+{% extends 'farm_generic.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="success-message">
+            <h2>Profile Photo Uploaded Successfully!</h2>
+            <p>Your profile photo has been updated. You can now view it on your Farmer page.</p>
+        </div>
+
+      <div class="button-container">
+            <a href="{% url 'accounts:farmer_page' %}" class="btn" style="background-color: orange; color: white;">Back to Home</a>
+        </div>
+
+    </div>
+
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .success-message {
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}

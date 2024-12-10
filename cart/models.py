@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
@@ -8,6 +9,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -18,6 +20,7 @@ class CartItem(models.Model):
 
     def get_total_price(self):
         return self.product.price * self.quantity
+
 
 class Order(models.Model):
     buyer_name = models.CharField(max_length=255)

@@ -30,63 +30,63 @@ body {
 
 /* Full-width footer container */
 .footer {
-  background-color: #333;
-  color: white;
-  padding: 20px 0;
-  width: 100%; /* Ensure footer spans the full width */
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    width: 100%; /* Ensure footer spans the full width */
 }
 
 .footer-container {
-  max-width: 1200px; /* Set a max-width for large screens */
-  margin: 0 auto; /* Center the container horizontally */
-  display: flex;
-  justify-content: space-between; /* Distribute sections evenly */
-  padding: 0 20px;
-  width: 100%; /* Ensure it stretches across the screen */
-  box-sizing: border-box;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    max-width: 1200px; /* Set a max-width for large screens */
+    margin: 0 auto; /* Center the container horizontally */
+    display: flex;
+    justify-content: space-between; /* Distribute sections evenly */
+    padding: 0 20px;
+    width: 100%; /* Ensure it stretches across the screen */
+    box-sizing: border-box;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 /* Styling for individual sections */
 .footer-left, .footer-center, .footer-right {
-  flex: 1;
-  padding: 10px;
+    flex: 1;
+    padding: 10px;
 }
 
 .footer-center {
-  text-align: center;
+    text-align: center;
 }
 
 .footer-right {
-  text-align: right;
+    text-align: right;
 }
 
 /* For tablets and smaller screens (max-width: 768px) */
 @media (max-width: 768px) {
-  .footer-container {
-    max-width: 100%; /* Remove the max-width to allow the footer to take the full screen */
-    padding: 0 10px; /* Adjust padding */
-    flex-direction: column; /* Stack footer sections vertically */
-    text-align: center; /* Center text for better readability */
-  }
+    .footer-container {
+        max-width: 100%; /* Remove the max-width to allow the footer to take the full screen */
+        padding: 0 10px; /* Adjust padding */
+        flex-direction: column; /* Stack footer sections vertically */
+        text-align: center; /* Center text for better readability */
+    }
 
-  .footer-left, .footer-center, .footer-right {
-    flex: 1;
-    padding: 10px;
-  }
+    .footer-left, .footer-center, .footer-right {
+        flex: 1;
+        padding: 10px;
+    }
 }
 
 /* For very small screens (max-width: 480px) */
 @media (max-width: 480px) {
-  .footer-container {
-    padding: 0 5px; /* Reduce padding on small devices */
-  }
+    .footer-container {
+        padding: 0 5px; /* Reduce padding on small devices */
+    }
 }
 
 /* General Container Styling */
 .container {
     padding: 30px;
-     width: 100%;
+    width: 100%;
 }
 
 /* Product Detail Page */

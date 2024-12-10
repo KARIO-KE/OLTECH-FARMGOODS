@@ -4,7 +4,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('farmers', '0005_farmer_remove_product_owner_remove_product_type_and_more'),
     ]

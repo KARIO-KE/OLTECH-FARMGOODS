@@ -1,0 +1,250 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Page - View Messages</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+
+        .messages-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .message-item {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            position: relative;
+        }
+
+        .message-item img {
+            max-width: 100px;
+            margin-right: 10px;
+        }
+
+        .message-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .message-buttons button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            opacity: 0.7;
+        }
+
+        .message-buttons button:hover {
+            opacity: 1;
+        }
+
+        footer {
+            background-color: #000;
+            padding: 15px 0;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-lightblue">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"> <img src="{% static 'images/logo.png' %}" alt="OLTech Logo" style="height:70px; width: 70px;"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:farmer_page' %}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:about' %}">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'shop:product_list' %}">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'farmers:contact' %}">Contact</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <a class="nav-link" href="{% url 'cart:cart' %}"><i class="fas fa-shopping-cart">cart</i></a>
+                    <ul class="navbar-nav ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="bi bi-bell"></i> Notifications</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:settings' %}"><i class="bi bi-gear"></i> Settings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:settings' %}"><i class="bi bi-person-circle"></i> {{ user.username }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="toggleTheme()"><i class="bi bi-moon"></i> Mode</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:logout' %}"><i class="bi bi-door-open"></i> Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="messages-container" id="messagesContainer">
+            <!-- Dynamic messages will be inserted here -->
+        </div>
+
+        <div class="container text-center my-5">
+            <!-- Return to Home Button -->
+            <a href="{% url 'accounts:farmer_page' %}" class="btn btn-primary mx-2 signup-btn">Return to Home</a>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h5 class="h6">Get in touch with us</h5>
+                <p class="mb-1">Email: info@Oltechfarmgoods.co.ke</p>
+                <p class="mb-1">Phone: (+254)768608040.</p>
+            </div>
+            <div>
+                <h5 class="h6">About Us</h5>
+                <p class="mb-1">We provide fresh farm produce to your doorstep.</p>
+            </div>
+            <div>
+                <h5 class="h6">Support Us</h5>
+                <p class="mb-1">Your support helps farmers get their produce to markets more easily.</p>
+            </div>
+        </div>
+        <div class="text-center mt-1">
+            <p class="mb-0" style="color: #FFA500;">&copy;Copyrights 2024 OLTECH FARMGOODS. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            const messages = JSON.parse(localStorage.getItem('messages')) || [];
+            const messagesContainer = document.getElementById('messagesContainer');
+
+            messages.forEach((message, index) => {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message-item');
+                messageDiv.innerHTML = `
+                    <p><strong>${message.farmerName}</strong></p>
+                    <p>${message.shortMessage}</p>
+                    <p>${message.fullMessage}</p>
+                    ${message.image ? `<img src="${message.image}" alt="Message Image">` : ''}
+                    <div class="message-buttons">
+                        <button onclick="submitToHome(${index})">Submit to Home</button>
+                        <button onclick="editMessage(${index})">Edit</button>
+                        <button onclick="deleteMessage(${index})">Delete</button>
+                    </div>
+                `;
+                messagesContainer.appendChild(messageDiv);
+            });
+        };
+function submitToHome(index) {
+    const messages = JSON.parse(localStorage.getItem('messages')) || [];
+    const message = messages[index];
+
+    // Save the selected message to localStorage
+    localStorage.setItem('submittedMessage', JSON.stringify(message));
+
+    // Redirect to the home page
+    window.location.href = '{% url "accounts:home" %}'; // Ensure this URL matches the home page URL pattern
+}
+function editMessage(index) {
+    const messages = JSON.parse(localStorage.getItem('messages')) || [];
+    const message = messages[index];
+
+    // Create the form to edit the message content
+    const editFormHtml = `
+        <div class="container">
+            <h3>Edit Message</h3>
+            <form id="editMessageForm">
+                <div class="mb-3">
+                    <label for="editShortMessage" class="form-label">Short Message</label>
+                    <input type="text" class="form-control" id="editShortMessage" value="${message.shortMessage}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="editFullMessage" class="form-label">Full Message</label>
+                    <textarea class="form-control" id="editFullMessage" rows="4" required>${message.fullMessage}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    `;
+
+    // Insert the edit form HTML directly into the page
+    document.body.innerHTML = editFormHtml;
+
+    // Handle form submission to save edited message
+    document.getElementById('editMessageForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Update message content with the form data
+        message.shortMessage = document.getElementById('editShortMessage').value;
+        message.fullMessage = document.getElementById('editFullMessage').value;
+
+        // Save the updated message back to localStorage
+        messages[index] = message;
+        localStorage.setItem('messages', JSON.stringify(messages));
+
+        // Redirect back to the success page or the page where messages are displayed
+        window.location.href = "{% url 'farmers:success_message' %}";  // Assuming this is the success page
+    });
+}
+
+        function deleteMessage(index) {
+            let messages = JSON.parse(localStorage.getItem('messages')) || [];
+            messages.splice(index, 1);
+            localStorage.setItem('messages', JSON.stringify(messages));
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>

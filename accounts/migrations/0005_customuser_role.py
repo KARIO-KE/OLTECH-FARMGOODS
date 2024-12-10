@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('accounts', '0004_customuser_is_farmer_confirmed'),
     ]
@@ -13,6 +12,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='customuser',
             name='role',
-            field=models.CharField(choices=[('admin', 'Admin'), ('farmer', 'Farmer'), ('customer', 'Customer')], default='user', max_length=20),
+            field=models.CharField(choices=[('admin', 'Admin'), ('farmer', 'Farmer'), ('customer', 'Customer')],
+                                   default='user', max_length=20),
         ),
     ]

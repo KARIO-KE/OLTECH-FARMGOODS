@@ -6,6 +6,7 @@ from . import views
 app_name = 'shop'  # This sets the namespace for the shop app
 
 urlpatterns = [
-    path('', views.product_list, name='product_list'),
-    # Add other paths as necessary
+    path('products/', views.product_list, name='product_list'),
+    path('product/<str:name>/', views.product_detail, name='product_detail'),
+    path('add_to_cart/', views.add_to_cart, name='add_to_cart'),
 ]

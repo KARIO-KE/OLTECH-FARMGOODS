@@ -1,5 +1,8 @@
 from django.db import models
-from django.conf import settings  # Import settings to reference the custom user model
+from django.conf import settings
+from django.utils import timezone
+from django.contrib.auth.models import User  # Make sure to import the User model
+from farmers.models import Product
 
 
 class Product(models.Model):
@@ -15,9 +18,11 @@ class Product(models.Model):
 
 
 class Cart(models.Model):
-    buyer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # Updated to use AUTH_USER_MODEL
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    buyer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+                              related_name='shop_cart')  # Specify related_name
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
+    added_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"Cart for {self.buyer.username} with {self.product.name}"

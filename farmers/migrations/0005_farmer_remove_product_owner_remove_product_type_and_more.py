@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('farmers', '0004_alter_product_owner'),
     ]
@@ -48,6 +47,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='product',
             name='farmer',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='farmers.farmer'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
+                                    to='farmers.farmer'),
         ),
     ]

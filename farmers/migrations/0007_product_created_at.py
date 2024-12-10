@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('farmers', '0006_rename_roduct_type_product_product_type'),
     ]

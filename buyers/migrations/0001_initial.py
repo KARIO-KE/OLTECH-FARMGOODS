@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -21,7 +20,9 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=200)),
                 ('description', models.TextField()),
                 ('price', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('category', models.CharField(choices=[('fruits', 'Fruits'), ('vegetables', 'Vegetables'), ('grains', 'Grains')], max_length=100)),
+                ('category',
+                 models.CharField(choices=[('fruits', 'Fruits'), ('vegetables', 'Vegetables'), ('grains', 'Grains')],
+                                  max_length=100)),
                 ('image', models.ImageField(blank=True, null=True, upload_to='product/')),
             ],
         ),
@@ -31,8 +32,12 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('full_name', models.CharField(max_length=255)),
                 ('phone_number', models.CharField(max_length=15)),
-                ('payment_method', models.CharField(choices=[('mpesa', 'Mpesa'), ('bank', 'Bank'), ('paypal', 'Paypal')], max_length=100)),
-                ('delivery_method', models.CharField(choices=[('pickup', 'Pickup Station'), ('delivery', 'Home Delivery')], max_length=100)),
+                ('payment_method',
+                 models.CharField(choices=[('mpesa', 'Mpesa'), ('bank', 'Bank'), ('paypal', 'Paypal')],
+                                  max_length=100)),
+                ('delivery_method',
+                 models.CharField(choices=[('pickup', 'Pickup Station'), ('delivery', 'Home Delivery')],
+                                  max_length=100)),
                 ('total_amount', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('transaction_id', models.CharField(blank=True, max_length=255, null=True)),
                 ('buyer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
